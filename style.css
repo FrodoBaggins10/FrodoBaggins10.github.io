@@ -16,12 +16,20 @@ header{
     background:linear-gradient(to right, #5d4157c0, #a8cabac2), url(Imagenes/Portada_Perros.png);
     background-size: cover;
     background-attachment: fixed;
+    background-position: top;
 }
 nav{/*Aqui se posiciona el contendor del nav en la pantalla, y su texto*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
     text-align: right;
     padding-top: 60px;
     padding-right: 60px;
+    padding-left: 60px;
     font-size: 2rem;
+}
+.responsive-home{
+    display: none;
 }
 nav a{/*Aca se separan los links del nav entre si*/
     padding: 0 0 0 0;
@@ -243,8 +251,52 @@ li.social__ul--li > a:hover{
 }
 /*Responsive design para mobile*/
 @media screen and (min-width:300px) and (max-width:767px){
-    nav{
-        text-align: center;
+    /* nav{
+        justify-content: center;
+        padding: 40px 40px;
+        font-size: 1.9rem;
+    } */
+    nav a{
+        display: none;
+    }
+    .responsive-home a{
+        display: none; /*Cambia a flex al presionar el boton*/
+        margin: 10px 0 10px 0;
+        animation-name: desplazamiento;
+        animation-duration: 0.5s;
+        animation-direction: alternate;
+        animation-fill-mode: forwards;
+        left: 0;
+        position: relative;
+    }
+    @keyframes desplazamiento {
+        0%{
+            left: -60vw;
+        }
+        100%{
+            left: 0vw;
+        }
+    }
+    .responsive-home{
+        display: flex;
+        padding-top: 0;
+        flex-direction: column;
+    }
+    .responsive-button{
+        border: none;
+        border-radius: 10px;
+        background-color: rgba(86, 153, 124, 0.659);
+        color: #1e221e;
+        width: 6rem;
+        height: 6rem;
+        font-size: 4rem;
+        align-self: flex-end;
+    }
+    .responsive-button:active{
+        background-color: rgba(6, 43, 27, 0.659);
+    }
+    section.text-header{
+        margin: 150px auto;
     }
     section.text-header h1{
         font-size: 5rem;
